@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<style>
+    .main-hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                    url("{{ url_for('static', filename='img/image6.jpg') }}");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 5rem 0 8rem 0;
+        text-align: center;
+        margin-bottom: 4rem;
+        border-radius: 13px;
+        position: relative;
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        line-height: 2;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .hero-content .lead1 {
+        font-size: 1.2rem;
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+        max-width: 500px;
+        margin: 0 auto;
+
+    }
+
+    .hero-button {
+        position: absolute;
+        bottom: -4rem;
+        left: 0;
+        right: 0;
+    }
+
+    .services-section {
+        margin-top: 6rem;
+        margin-bottom: 5rem;
+    }
+
+    .service-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        transition: all 0.3s;
+        height: 100%;
+        border: 1px solid #eee;
+    }
+
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .service-img {
+        height: 200px;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    .service-icon {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 15px;
+    }
+
+    .about-section {
+        background: white;
+        border-radius: 10px;
+        padding: 3rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        margin-bottom: 3rem;
+    }
+
+    @media (max-width: 768px) {
+        .main-hero {
+            padding: 4rem 0 7rem 0;
+            min-height: 250px;
+            margin-bottom: 3rem;
+        }
+
+        .hero-content h1 {
+            font-size: 1.8rem;
+        }
+
+        .hero-content p {
+            font-size: 1rem;
+        }
+
+        .hero-button {
+            bottom: -1.5rem;
+        }
+
+        .services-section {
+            margin-top: 4rem;
+            margin-bottom: 3rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Герой секция -->
+<section class="main-hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Профессиональные полиграфические услуги</h1>
+            <p class="lead1">Высокое качество, быстрые сроки исполнения и индивидуальный подход</p>
+        </div>
+        <div class="hero-button">
+            <a href="{{ url_for('services') }}" class="btn btn-primary btn-lg px-4">
+                <i class="fas fa-list-ul me-2"></i>Наши услуги
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Популярные услуги -->
+<section class="services-section">
+    <div class="container">
+        <h2 class="text-center mb-5">Популярные услуги</h2>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="service-card">
+                    <img src="{{ url_for('static', filename='img/photo-souvenirs.jpg') }}" class="service-img" alt="Фотосувениры">
+                    <div class="card-body text-center p-4">
+                        <div class="service-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h3 class="h5">Фотосувениры</h3>
+                        <p class="text-muted">от 400 ₽</p>
+                        <a href="{{ url_for('services') }}#photo-souvenirs" class="btn btn-outline-primary btn-sm">
+                            Подробнее
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="service-card">
+                    <img src="{{ url_for('static', filename='img/photo-print.jpg') }}" class="service-img" alt="Фотопечать">
+                    <div class="card-body text-center p-4">
+                        <div class="service-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h3 class="h5">Фотопечать</h3>
+                        <p class="text-muted">от 12 ₽/шт.</p>
+                        <a href="{{ url_for('services') }}#photo-print" class="btn btn-outline-primary btn-sm">
+                            Подробнее
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="service-card">
+                    <img src="{{ url_for('static', filename='img/color-print.jpg') }}" class="service-img" alt="Цветная печать">
+                    <div class="card-body text-center p-4">
+                        <div class="service-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3 class="h5">Цветная печать</h3>
+                        <p class="text-muted">от 20 ₽/шт.</p>
+                        <a href="{{ url_for('services') }}#color-print" class="btn btn-outline-primary btn-sm">
+                            Подробнее
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="service-card">
+                    <img src="{{ url_for('static', filename='img/business-cards.jpg') }}" class="service-img" alt="Визитки">
+                    <div class="card-body text-center p-4">
+                        <div class="service-icon">
+                            <i class="fas fa-address-card"></i>
+                        </div>
+                        <h3 class="h5">Изготовление визиток</h3>
+                        <p class="text-muted">от 2000 ₽</p>
+                        <a href="{{ url_for('services') }}#business-cards" class="btn btn-outline-primary btn-sm">
+                            Подробнее
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- О компании -->
+<section class="about-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <h2 class="mb-4">О нашем центре</h2>
+                <p>Мы работаем на рынке полиграфических услуг с 2020 года и за это время заслужили репутацию надежного партнера.</p>
+                <p>Наш копицентр оснащен современным оборудованием, что позволяет нам выполнять заказы любой сложности в кратчайшие сроки.</p>
+                <a href="{{ url_for('contacts') }}" class="btn btn-primary mt-3">
+                    <i class="fas fa-map-marker-alt me-2"></i>Контакты
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

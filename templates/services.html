@@ -1,0 +1,440 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<style>
+    :root {
+        --primary: #4361ee;
+        --primary-light: #e6f0ff;
+        --dark: #2b2d42;
+        --light: #f8f9fa;
+    }
+
+    .service-hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                    url("{{ url_for('static', filename='img/image6.jpg') }}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding: 8rem 0;
+        text-align: center;
+        margin: 0 15px 2rem;
+        color: white;
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .service-hero h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        margin-bottom: 1rem;
+    }
+
+    .service-hero .lead {
+        font-size: 1.2rem;
+        text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .service-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+
+    .service-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+        border: 1px solid #eee;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .service-card-header {
+        padding: 1.25rem;
+        background: var(--primary-light);
+        border-bottom: 3px solid var(--primary);
+    }
+
+    .service-card-header h3 {
+        color: var(--dark);
+        margin: 0;
+        font-size: 1.2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .service-price-tag {
+        background: var(--primary);
+        color: white;
+        padding: 0.25rem 0.7rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+    }
+
+    .service-card-body {
+        padding: 1.25rem;
+        flex-grow: 1;
+    }
+
+    .service-feature {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.6rem 0;
+        border-bottom: 1px dashed #eee;
+    }
+
+    .service-feature:last-child {
+        border-bottom: none;
+    }
+
+    .service-feature-name {
+        color: var(--dark);
+        font-size: 0.95rem;
+    }
+
+    .service-feature-price {
+        color: var(--primary);
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+
+    .service-note {
+        font-size: 0.8rem;
+        color: #6c757d;
+        margin-top: 0.8rem;
+        padding-top: 0.8rem;
+        border-top: 1px dashed #eee;
+    }
+
+    .service-card-footer {
+        padding: 0 1.25rem 1.25rem;
+    }
+
+    .order-btn {
+        display: block;
+        width: 100%;
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 0.6rem;
+        border-radius: 8px;
+        font-weight: 500;
+        text-align: center;
+        transition: all 0.3s;
+        font-size: 0.9rem;
+    }
+
+    .order-btn:hover {
+        background: #3a56d4;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(58, 86, 212, 0.3);
+    }
+
+    .service-cta {
+        text-align: center;
+        margin: 3rem 0;
+        padding: 2rem;
+        background: var(--light);
+        border-radius: 12px;
+    }
+
+    .divider {
+        display: flex;
+        align-items: center;
+        margin: 1.5rem 0;
+    }
+
+    .divider-line {
+        flex-grow: 1;
+        height: 1px;
+        background: #eee;
+    }
+
+    .divider-text {
+        padding: 0 1rem;
+        color: #6c757d;
+        font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+        .service-hero {
+            padding: 3rem 0;
+            margin: 0 10px 1.5rem;
+            border-radius: 12px;
+        }
+
+        .service-hero h1 {
+            font-size: 2rem;
+        }
+
+        .service-hero .lead {
+            font-size: 1.1rem;
+        }
+
+        .service-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Герой секция с уменьшенными отступами -->
+<section class="service-hero">
+    <div class="container">
+        <h1>Наши полиграфические услуги</h1>
+        <p class="lead">Качественная печать и оперативное исполнение заказов</p>
+    </div>
+</section>
+
+<!-- Основной контент -->
+<div class="container">
+    <!-- Фотосувениры -->
+    <div class="service-grid">
+        <div class="service-card">
+            <div class="service-card-header">
+                <h3>Фотосувениры <span class="service-price-tag">от 400 ₽</span></h3>
+            </div>
+            <div class="service-card-body">
+                <div class="service-feature">
+                    <span class="service-feature-name">Кружка белая</span>
+                    <span class="service-feature-price">400 ₽</span>
+                </div>
+                <div class="service-feature">
+                    <span class="service-feature-name">Кружка цветная</span>
+                    <span class="service-feature-price">500 ₽</span>
+                </div>
+                <div class="service-feature">
+                    <span class="service-feature-name">Кружка хамелеон</span>
+                    <span class="service-feature-price">600 ₽</span>
+                </div>
+                <div class="service-feature">
+                    <span class="service-feature-name">Футболка (21×30 см)</span>
+                    <span class="service-feature-price">1100 ₽</span>
+                </div>
+                <div class="service-feature">
+                    <span class="service-feature-name">Подушка (30×30 см)</span>
+                    <span class="service-feature-price">1100 ₽</span>
+                </div>
+            </div>
+            <div class="service-card-footer">
+                <a href="https://wa.me/c/79509476602" class="order-btn" target="_blank">
+                    Заказать в WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <!-- Фотопечать -->
+        <div class="service-card">
+            <div class="service-card-header">
+                <h3>Фотопечать <span class="service-price-tag">от 12 ₽/шт.</span></h3>
+            </div>
+            <div class="service-card-body">
+                <div class="service-feature">
+                    <span class="service-feature-name">10×15 (до 100 шт.)</span>
+                    <span class="service-feature-price">12 ₽/шт.</span>
+                </div>
+                <div class="service-feature">
+                    <span class="service-feature-name">10×15 (от 101 шт.)</span>
+                    <span class="service-feature-price">10 ₽/шт.</span>
+                </div>
+                <div class="service-feature">
+                    <span class="service-feature-name">13×18</span>
+                    <span class="service-feature-price">40 ₽/шт.</span>
+                </div>
+                <div class="service-feature">
+                    <span class="service-feature-name">15×21</span>
+                    <span class="service-feature-price">40 ₽/шт.</span>
+                </div>
+                <div class="service-feature">
+                    <span class="service-feature-name">21×30 (стандарт)</span>
+                    <span class="service-feature-price">80 ₽/шт.</span>
+                </div>
+                <div class="service-feature">
+                    <span class="service-feature-name">21×30 (от 100 шт.)</span>
+                    <span class="service-feature-price">50 ₽/шт.</span>
+                </div>
+                <div class="service-feature">
+                    <span class="service-feature-name">30×40</span>
+                    <span class="service-feature-price">160 ₽/шт.</span>
+                </div>
+            </div>
+            <div class="service-card-footer">
+                <a href="https://wa.me/c/79509476602" class="order-btn" target="_blank">
+                    Заказать в WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Разделитель -->
+    <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-text">Популярные услуги</div>
+        <div class="divider-line"></div>
+    </div>
+
+    <!-- Вторая сетка услуг -->
+    <div class="service-grid">
+        <!-- Цветная печать -->
+        <div class="service-card">
+            <div class="service-card-header">
+                <h3>Цветная печать <span class="service-price-tag">от 20 ₽/шт.</span></h3>
+            </div>
+            <div class="service-card-body">
+                <div class="service-feature">
+                    <span class="service-feature-name">Стандартная цена</span>
+                    <span class="service-feature-price">20 ₽/шт.</span>
+                </div>
+                <div class="service-feature">
+                    <span class="service-feature-name">Опт от 100 шт.</span>
+                    <span class="service-feature-price">15 ₽/шт.</span>
+                </div>
+                <div class="service-feature">
+                    <span class="service-feature-name">Цветная печать А3</span>
+                    <span class="service-feature-price">50 ₽/шт.</span>
+                </div>
+                <div class="service-note">
+                    на простой бумаге 80г
+                </div>
+            </div>
+            <div class="service-card-footer">
+                <a href="https://wa.me/c/79509476602" class="order-btn" target="_blank">
+                    Заказать в WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <!-- Сканирование -->
+        <div class="service-card">
+            <div class="service-card-header">
+                <h3>Сканирование <span class="service-price-tag">35 ₽</span></h3>
+            </div>
+            <div class="service-card-body">
+                <div class="service-feature">
+                    <span class="service-feature-name">Перевод в электронный формат</span>
+                    <span class="service-feature-price">35 ₽</span>
+                </div>
+            </div>
+            <div class="service-card-footer">
+                <a href="https://wa.me/c/79509476602" class="order-btn" target="_blank">
+                    Заказать в WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <!-- Магниты с фото -->
+        <div class="service-card">
+            <div class="service-card-header">
+                <h3>Магниты с фото <span class="service-price-tag">300 ₽</span></h3>
+            </div>
+            <div class="service-card-body">
+                <div class="service-feature">
+                    <span class="service-feature-name">Изготовление магнитов</span>
+                    <span class="service-feature-price">300 ₽</span>
+                </div>
+                <div class="service-note">
+                    Доступные размеры: 97×62 мм, 92×92 мм
+                </div>
+            </div>
+            <div class="service-card-footer">
+                <a href="https://wa.me/c/79509476602" class="order-btn" target="_blank">
+                    Заказать в WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Еще услуги -->
+    <div class="service-grid">
+        <!-- Визитки -->
+        <div class="service-card">
+            <div class="service-card-header">
+                <h3>Изготовление визиток <span class="service-price-tag">от 2000 ₽</span></h3>
+            </div>
+            <div class="service-card-body">
+                <div class="service-note">
+                    Материал: Мелованная бумага 350 г/м²
+                </div>
+                <div class="service-feature">
+                    <span class="service-feature-name">1000 шт., односторонние</span>
+                    <span class="service-feature-price">2000 ₽</span>
+                </div>
+                <div class="service-feature">
+                    <span class="service-feature-name">1000 шт., двусторонние</span>
+                    <span class="service-feature-price">2300 ₽</span>
+                </div>
+                <div class="service-note">
+                    Дополнительные услуги:
+                </div>
+                <div class="service-feature">
+                    <span class="service-feature-name">Разработка макета (односторонний)</span>
+                    <span class="service-feature-price">от 500 ₽</span>
+                </div>
+                <div class="service-feature">
+                    <span class="service-feature-name">Разработка макета (двусторонний)</span>
+                    <span class="service-feature-price">от 800 ₽</span>
+                </div>
+                <div class="service-note">
+                    Срок изготовления: 5–7 дней
+                </div>
+            </div>
+            <div class="service-card-footer">
+                <a href="https://wa.me/c/79509476602" class="order-btn" target="_blank">
+                    Заказать в WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <!-- Набор текста -->
+        <div class="service-card">
+            <div class="service-card-header">
+                <h3>Набор текста <span class="service-price-tag">от 150 ₽</span></h3>
+            </div>
+            <div class="service-card-body">
+                <div class="service-feature">
+                    <span class="service-feature-name">Стандартная цена (шрифт 14, интервал 1.5)</span>
+                    <span class="service-feature-price">150 ₽/стр.</span>
+                </div>
+                <div class="service-feature">
+                    <span class="service-feature-name">Короткие тексты</span>
+                    <span class="service-feature-price">от 50 ₽</span>
+                </div>
+                <div class="service-note">
+                    Пример: "ПРОДАЕТСЯ ГАРАЖ"
+                </div>
+            </div>
+            <div class="service-card-footer">
+                <a href="https://wa.me/c/79509476602" class="order-btn" target="_blank">
+                    Заказать в WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Призыв к действию -->
+    <div class="service-cta">
+        <h3>Нужна другая услуга?</h3>
+        <p class="lead">Мы выполняем множество полиграфических работ - свяжитесь с нами для уточнения деталей</p>
+        <a href="https://wa.me/c/79509476602" class="btn btn-primary btn-lg" target="_blank">
+            <i class="fab fa-whatsapp me-2"></i>Написать в WhatsApp
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,84 @@
+/* Основные стили, которые не вошли в inline стили */
+.btn-outline-primary {
+    color: #4361ee;
+    border-color: #4361ee;
+}
+
+.btn-outline-primary:hover {
+    background: #4361ee;
+    color: white;
+}
+
+.navbar-brand {
+    font-weight: 600;
+}
+
+.nav-link {
+    font-weight: 500;
+}
+
+.lead {
+    font-weight: 300;
+}
+
+.footer a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: white;
+}
+.policy-content {
+    line-height: 1.6;
+}
+
+.policy-content h2 {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.policy-content h3 {
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+}
+
+.policy-content p {
+    margin-bottom: 1rem;
+}
+
+.policy-content ul {
+    padding-left: 1.5rem;
+}
+/* Анимации */
+.service-card, .price-table, .comparison-table {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Адаптивные стили */
+@media (max-width: 992px) {
+    .display-4 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-hero {
+        min-height: 200px;
+        padding: 2rem 0;
+    }
+
+    .main-hero {
+        mai-height: 25px;
+        padding: 3rem 0;
+        transform: scale(0.9); /* Уменьшает весь блок на 10% */
+        transform-origin: top center;
+        max-width: 500px; /* Уменьшаем максимальную ширину контента */
+        margin: 0 auto
+
+    }
+}

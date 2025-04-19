@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}КопиЦентр - Профессиональные полиграфические услуги{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-light: #e6f0ff;
+            --dark: #2b2d42;
+            --light: #f8f9fa;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding-top: 56px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .main-content {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+            margin: 50px 0;  /* Уменьшил margin сверху и снизу */
+            padding: 30px;
+        }
+
+        .navbar {
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            background: rgba(33, 37, 41, 0.9);
+            color: white;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: #3a56d4;
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Навигационное меню -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('home') }}">
+                <i class="fas fa-copy me-2"></i>КопиЦентр
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link {{ 'active' if request.path == url_for('home') }}" href="{{ url_for('home') }}">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ 'active' if request.path == url_for('services') }}" href="{{ url_for('services') }}">Услуги</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ 'active' if request.path == url_for('contacts') }}" href="{{ url_for('contacts') }}">Контакты</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ 'active' if request.path == url_for('information') }}" href="{{ url_for('information') }}">Информация</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="main-content">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <!-- Футер -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-copy me-2"></i>КопиЦентр</h5>
+                    <p class="small">Профессиональные полиграфические услуги в Казани с 2020 года</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Навигация</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ url_for('home') }}" class="text-white">Главная</a></li>
+                        <li><a href="{{ url_for('services') }}" class="text-white">Услуги</a></li>
+                        <li><a href="{{ url_for('contacts') }}" class="text-white">Контакты</a></li>
+                        <li><a href="{{ url_for('information') }}" class="text-white">Информация</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Контакты</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> ул. Зорге, 60</li>
+                        <li><i class="fas fa-phone me-2"></i> +7 (950) 947-66-02 </li>
+                        <li><i class="fas fa-envelope me-2"></i> zorge60@internet.ru</li>
+                        <li><i class="fas fa-clock me-2"></i> Пн-Пт: 08:00-19:00</li>
+                        <li><i class="fas fa-clock me-2"></i> Сб-Вс: 08:00-19:00</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 bg-light">
+            <div class="text-center small">
+                <p class="mb-0">© 2020 КопиЦентр. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
+

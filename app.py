@@ -1,10 +1,6 @@
-# -*- coding: utf-8 -*-
-
 from flask import Flask, render_template
 
-app = Flask(__name__,
-            static_folder='static',       
-            template_folder='templates')
+app = Flask(__name__)
 
 services_data = [
     {
@@ -231,6 +227,19 @@ services_data = [
         ]
     }
 ]
+@app.route('/news')
+def news():
+    news_data = [
+        {
+            'id': 1,
+            'title': 'Новые услуги фотопечати',
+            'date': '15 мая 2023',
+            'content': 'Мы рады сообщить о расширении ассортимента услуг фотопечати...',
+            'image': 'news1.jpg'
+        },
+
+    ]
+    return render_template('news.html', news=news_data)
 
 @app.route('/')
 def home():
@@ -260,8 +269,4 @@ def contacts():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',
-            port=443,
-           ssl_context=('сertificate.crt', 'certificate.key')
-           )
-
+    app.run(debug=True)

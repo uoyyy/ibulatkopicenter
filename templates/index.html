@@ -1,5 +1,24 @@
 {% extends "base.html" %}
 
+{% block extra_head %}
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(101412392, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/101412392" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+{% endblock %}
+
 {% block extra_css %}
 <style>
     .main-hero {
@@ -45,12 +64,14 @@
         margin-top: 6rem;
         margin-bottom: 5rem;
     }
+
     @media (min-width: 768px) {
         .news-img{
-        height: auto;
-        max-height: 480px;
+            height: auto;
+            max-height: 480px;
         }
     }
+
     .news-section {
         margin-bottom: 5rem;
     }
@@ -153,6 +174,7 @@
             margin-bottom: 3rem;
         }
     }
+
     .order-btn {
         display: block;
         width: 100%;
@@ -278,7 +300,7 @@
                         <div class="news-date">24 апреля 2025</div>
                         <h3 class="h5">Новые услуги фотопечати</h3>
                         <p class="news-price">от 650 ₽</p>
-                        <p>Мы рады сообщить, что мы делаем <strong>ШТЕНДЕР</strong>, который используется в шествии "Бессметный полк".</p>
+                        <p>Мы рады сообщить, что мы делаем <strong>ШТЕНДЕР</strong>, которая используется в шествии "Бессметный полк".</p>
                          <a href="https://wa.me/c/79509476602" class="order-btn" target="_blank">
                             Заказать в WhatsApp
                          </a>
